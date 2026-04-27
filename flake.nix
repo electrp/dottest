@@ -4,6 +4,7 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    import-tree.url = "github:vic/import-tree";
   };
 
   outputs = inputs@{ flake-parts, ... }:
@@ -14,7 +15,7 @@
         #   1. Add foo to inputs
         #   2. Add foo as a parameter to the outputs function
         #   3. Add here: foo.flakeModule
-
+        (inputs.import-tree ./modules)
       ];
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
       perSystem = { config, self', inputs', pkgs, system, ... }: {
