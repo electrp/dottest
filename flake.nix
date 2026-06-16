@@ -5,6 +5,11 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     import-tree.url = "github:vic/import-tree";
+    home-manager.url = "github:nix-community/home-manager";
+    niri-flake.url = "github:sodiboo/niri-flake";
+    tidaLuna.url = "github:Inrixia/TidaLuna";
+    musnix  = { url = "github:musnix/musnix"; };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
   };
 
   outputs = inputs@{ flake-parts, ... }:
