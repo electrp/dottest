@@ -15,7 +15,6 @@
 
     programs.gamescope = {
       enable = true;
-      env = {};
     };
   };
 }    
