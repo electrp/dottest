@@ -179,8 +179,6 @@
 			 clang-tools
 			 gcc
 			 gparted
-			 polkit
-			 kdePackages.polkit-kde-agent-1
 			 xorg.xhost
 			 kdePackages.partitionmanager
 			 fastfetch 
@@ -201,7 +199,6 @@
 
 		services.libinput.enable = true;
 
-		security.polkit.enable = true;
 
 		programs.partition-manager.enable = true;
 
