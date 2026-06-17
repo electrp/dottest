@@ -13,7 +13,7 @@
 
 		# Hardware conf
 		boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "uas" "sd_mod" "sdhci_pci" "amdgpu" "nvidia" ];
-		boot.initrd.kernelModules = [ ];
+		boot.initrd.kernelModules = [ "amdgpu" ];
 		boot.kernelModules = [ "kvm-amd" ];
 		boot.extraModulePackages = [ ];
 
@@ -39,6 +39,7 @@
 
 		nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 		hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+		hardware.enableRedistributableFirmware = true;
 
 		# Other conf
 		fileSystems."/win" = {
