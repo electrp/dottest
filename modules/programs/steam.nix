@@ -12,6 +12,11 @@
       gamescopeSession.enable = true;
       extest.enable = true;
     };
+
+    programs.gamescope = {
+      enable = true;
+      env = {};
+    };
   };
 }    
 
