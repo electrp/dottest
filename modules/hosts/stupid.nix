@@ -2,7 +2,7 @@
 {
   flake.nixosConfigurations = inputs.self.lib.clib.mkNixos "x86_64-linux" "stupid";
 
-  flake.modules.nixos.stupid = {config, ...}: {
+  flake.modules.nixos.stupid = { pkgs, config, ...}: {
     imports = [ 
       inputs.self.modules.nixos.home-manager
       inputs.self.modules.nixos.will
@@ -33,6 +33,11 @@
         options = [ "uid=1000" "gid=100" "dmask=007" "fmask=117" ];
       };
 
+    fileSystems."/mnt/alt" =
+      { device = "/dev/disk/by-uuid/760c2efe-1aa6-4968-9796-ee7655dd39c9";
+        fsType = "ext4";
+        options = [ "users" "nofail" ];
+      };
 
     swapDevices = [ {
       device = "/var/lib/swapfile";
@@ -60,6 +65,7 @@
     };
 
     services.xserver.enable = true;
+    services.xserver.videoDrivers = [ "nvidia" ];
     
     hardware = {
       graphics = {
@@ -70,8 +76,10 @@
         opencl.enable = true;
         initrd.enable = true;
       };
+      nvidia.open = true;
     };
     hardware.enableRedistributableFirmware = true;
+    hardware.nvidia.modesetting.enable = true;
 
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
