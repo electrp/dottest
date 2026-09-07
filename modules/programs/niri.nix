@@ -19,12 +19,23 @@
     environment.systemPackages = [
       pkgs.waybar
       pkgs.xwayland-satellite
+      pkgs.nautilus
     ];
 
     # KDE generally preferred, as thats what i'm going from
     xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+      extraPortals = [ 
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.xdg-desktop-portal-gtk
+      ];
+      config.common.default = "*";
+      config.niri = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+      };
     };
   };
 }

@@ -15,6 +15,7 @@
     boot.extraModulePackages = [ ];
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
     fileSystems."/" =
       { device = "/dev/disk/by-uuid/4fb01360-40e1-4b28-be6c-de2d323b0fea";
@@ -27,11 +28,17 @@
         options = [ "fmask=0077" "dmask=0077" ];
       };
 
-    fileSystems."/home/will/mnt/big" =
-      { device = "/dev/disk/by-uuid/B6B89216B891D569";
-        fsType = "ntfs";
-        options = [ "uid=1000" "gid=100" "dmask=007" "fmask=117" "nofail" ];
-      };
+    # fileSystems."/home/will/mnt/big" =
+    #   { device = "/dev/disk/by-uuid/B6B89216B891D569";
+    #     fsType = "ntfs";
+    #     options = [ "uid=1000" "gid=100" "dmask=007" "fmask=117" "nofail" ];
+    #   };
+
+    # fileSystems."/mnt/alt" =
+    #   { device = "/dev/disk/by-uuid/760c2efe-1aa6-4968-9796-ee7655dd39c9";
+    #     fsType = "ext4";
+    #     options = [ "users" "nofail" ];
+    #   };
 
     swapDevices = [ {
       device = "/var/lib/swapfile";
@@ -40,6 +47,8 @@
 
     networking.hostName = "stupid"; 
     networking.networkmanager.enable = true;
+
+    programs.gamemode.enable = true;
 
     time.timeZone = "America/Los_Angeles";
 
@@ -59,7 +68,7 @@
     };
 
     services.xserver.enable = true;
-    services.xserver.videoDrivers = [ "nvidia" ];
+    services.xserver.videoDrivers = [ "nvidia" ]; 
     
     hardware = {
       graphics = {
@@ -70,10 +79,29 @@
         opencl.enable = true;
         initrd.enable = true;
       };
-      nvidia.open = true;
+      nvidia = {
+        open = true;
+        nvidiaSettings = true;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
+      };
     };
     hardware.enableRedistributableFirmware = true;
     hardware.nvidia.modesetting.enable = true;
+
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
+    services.printing = {
+      enable = true;
+      drivers = with pkgs; [
+        cups-filters
+        cups-browsed
+      ];
+    };
+    services.ipp-usb.enable = true;
 
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
