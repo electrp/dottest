@@ -5,7 +5,7 @@
 }:
 let
   home-manager-config =
-    { lib, ... }:
+    { lib, pkgs-main, ... }:
     {
       home-manager = {
         verbose = true;
@@ -14,6 +14,12 @@ let
         backupFileExtension = "backup";
         backupCommand = "rm";
         overwriteBackup = true;
+        extraSpecialArgs = { 
+          pkgs-master = import inputs.main {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          }; 
+        };
       };
     };
 in

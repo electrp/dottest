@@ -10,6 +10,7 @@ in {
       lib,
       config,
       pkgs,
+      pkgs-main,
       ...
     }:
     {
@@ -78,6 +79,17 @@ in {
         pkgs.kdePackages.kio-extras
         pkgs.kdePackages.qtwayland
         pkgs.libsForQt5.qt5.qtwayland
+        (pkgs.lutris.override {
+          buildFHSEnv = args: pkgs.buildFHSEnv (args // {
+            multiPkgs = envPkgs: let
+              originalPkgs = args.multiPkgs envPkgs;
+              customLdap = envPkgs.openldap.overrideAttrs (_: {
+                doCheck = false;
+              });
+            in
+              builtins.filter (p: (p.pname or "") != "openldap") originalPkgs ++ [ customLdap ];
+          });
+        })
       ];
 
       services.udev.extraRules = ''
@@ -94,13 +106,26 @@ in {
         # Or use your specific username if needed, e.g., security.pam.services.<your-username>.kwallet.enable = true;
       };
 
+      systemd.settings.Manager = {
+        DefaultLimitNOFILE = 524288;
+      };
+      security.pam.loginLimits = [{
+        domain = "will";
+        type = "hard";
+        item = "nofile";
+        value = "524288";
+      }];
+
       programs.partition-manager.enable = true;
+      networking.firewall.allowedTCPPorts = [ 8080 ];
+
     };
   
-  flake.modules.homeManager."${username}" = { pkgs, ... }:
+  flake.modules.homeManager."${username}" = { pkgs, pkgs-main, ... }:
   {
     home.username = "${username}";
     home.stateVersion = "26.05";
+
 
     home.packages = with pkgs; [
       libreoffice-still
@@ -112,8 +137,11 @@ in {
       # surge
       yabridgectl
       bs-manager
-      (pkgs.yabridge.overrideAttrs (oldAttrs: { wine = pkgs.wineWowPackages.staging; }))
-      lutris 
+      (pkgs.yabridge.overrideAttrs (oldAttrs: { wine = pkgs.wineWow64Packages.staging; }))
+      wineWow64Packages.waylandFull
+      winetricks
+      vintagestory
+      heroic
     ];
   };
 }

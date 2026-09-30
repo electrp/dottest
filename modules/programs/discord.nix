@@ -14,7 +14,8 @@
   # primarially for wayland idle
   flake.modules.homeManager.discord = {pkgs, ...}: {
     home.packages = [
-      pkgs.vesktop   
+      pkgs.discord-canary
+      pkgs.vesktop
     ];
   };
 }    

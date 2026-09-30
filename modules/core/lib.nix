@@ -8,6 +8,12 @@ let
           inputs.self.modules.nixos.${name}
           { nixpkgs.hostPlatform = lib.mkDefault system; }
         ];
+        specialArgs = {
+          pkgs-main = import inputs.main {
+              system = system;
+              config.allowUnfree = true;
+          };
+        };
       };
     };
 

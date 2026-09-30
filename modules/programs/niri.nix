@@ -20,6 +20,7 @@
       pkgs.waybar
       pkgs.xwayland-satellite
       pkgs.nautilus
+      pkgs.xdg-desktop-portal-gnome
     ];
 
     # KDE generally preferred, as thats what i'm going from
@@ -27,15 +28,8 @@
       enable = true;
       extraPortals = [ 
         pkgs.xdg-desktop-portal-gnome
-        pkgs.xdg-desktop-portal-gtk
       ];
-      config.common.default = "*";
-      config.niri = {
-        default = [
-          "gnome"
-          "gtk"
-        ];
-      };
+      config.common.default = [ "gnome" ];
     };
   };
 }

@@ -4,6 +4,7 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    main.url = "github:NixOS/nixpkgs";
     import-tree.url = "github:vic/import-tree";
     home-manager.url = "github:nix-community/home-manager";
     niri-flake.url = "github:sodiboo/niri-flake";
