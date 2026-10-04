@@ -7,10 +7,11 @@
 {
   flake.nixosConfigurations = inputs.self.lib.clib.mkNixos "x86_64-linux" "broken";
 
-  flake.modules.nixos.broken = {pkgs, ...}: {
+  flake.modules.nixos.broken = {config, pkgs, ...}: {
     imports = with inputs.self.modules.nixos; [
       home-manager
       will
+      tailscale
     ];
 
     swapDevices = [{
@@ -20,6 +21,7 @@
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    services.displayManager.ly.enable = true;
 
     hardware.bluetooth.enable = true; # Enables the Bluetooth hardware service
 
@@ -31,6 +33,27 @@
     };
 
     networking.networkmanager.enable = true;
+    networking.hostName = "broken";
+    networking.wireless.enable = true;
+    time.timeZone = "America/Vancouver";
+    i18n.defaultLocale = "en_CA.UTF-8";
+    services.xserver.enable = true;
+
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
+    services.printing = {
+      enable = true;
+      drivers = with pkgs; [
+        cups-filters
+        cups-browsed
+      ];
+    };
+
+
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" ];
     boot.initrd.kernelModules = [ ];
@@ -48,7 +71,10 @@
         options = [ "fmask=0077" "dmask=0077" ];
       };
 
+    services.upower.enable = true;
+
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    hardware.enableRedistributableFirmware = true;
   };
-}
+} 

@@ -14,8 +14,13 @@
   };
 
   flake.modules.homeManager.code = {pkgs, ...}: {
-    home.packages = [
-      pkgs.vscode
-    ];
+    programs.vscode = {
+      enable = true;
+      # mutableExtensionsDir = false;
+      # extensions = with pkgs.vscode-extensions; [
+      #   vscodevim.vim
+      #   jnoortheen.nix-ide
+      # ];
+    };
   };
 }    

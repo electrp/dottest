@@ -26,6 +26,15 @@ let
       };
     };
 
+    mkShell = name: {
+      ${name} = inputs.nixpkgs.mkShell {
+        name = name;
+        imports = [
+          inputs.self.modules.devShells.${name}
+        ];
+      };
+    };
+
     # mkHomeManager = system: name: {
     #   ${name} = inputs.home-manager.lib.homeManagerConfiguration {
     #     pkgs = inputs.nixpkgs.legacyPackages.${system};

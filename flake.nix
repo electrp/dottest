@@ -7,10 +7,22 @@
     main.url = "github:NixOS/nixpkgs";
     import-tree.url = "github:vic/import-tree";
     home-manager.url = "github:nix-community/home-manager";
-    niri-flake.url = "github:sodiboo/niri-flake";
+    niri-flake = {
+      url = "github:epireyn/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     tidaLuna.url = "github:Inrixia/TidaLuna";
     musnix  = { url = "github:musnix/musnix"; };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
+    # nix-devshell.url = "github:wiomoc/vscode-nix-devshell";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ flake-parts, ... }:
@@ -21,7 +33,7 @@
         #   1. Add foo to inputs
         #   2. Add foo as a parameter to the outputs function
         #   3. Add here: foo.flakeModule
-        (inputs.import-tree ./modules)
+        (inputs.import-tree ./modules)  
       ];
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
       perSystem = { config, self', inputs', pkgs, system, ... }: {

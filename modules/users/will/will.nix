@@ -78,7 +78,7 @@ in {
         pkgs.kdePackages.kio-fuse
         pkgs.kdePackages.kio-extras
         pkgs.kdePackages.qtwayland
-        pkgs.libsForQt5.qt5.qtwayland
+        pkgs.qt5.qtwayland
         (pkgs.lutris.override {
           buildFHSEnv = args: pkgs.buildFHSEnv (args // {
             multiPkgs = envPkgs: let
@@ -128,7 +128,7 @@ in {
 
 
     home.packages = with pkgs; [
-      libreoffice-still
+      libreoffice-stable
       jetbrains.rider
       jetbrains.clion
       reaper
