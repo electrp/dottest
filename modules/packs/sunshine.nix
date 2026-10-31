@@ -7,9 +7,10 @@
     services.sunshine = {
       enable = true;
       autoStart = true;  # optional: starts Sunshine automatically on login
-      capSysAdmin = true;
+      capSysAdmin = false;
       openFirewall = true;
     };
+
 
     networking.firewall = {
       enable = true;
@@ -27,7 +28,13 @@
       cudaSupport = true;
       cudaPackages = pkgs.cudaPackages;
     };
+
+    security.wrappers.sunshine = {
+      owner = "root";
+      group = "root";
+      capabilities = "cap_sys_admin+p";
+      source = "${pkgs.sunshine}/bin/sunshine";
+    };
   };
 }    
-
 

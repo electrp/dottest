@@ -15,7 +15,7 @@ in {
     }:
     {
       imports = with inputs.self.modules.nixos; [
-        niri code firefox terminal discord steam godot direnv dolphin pipewire musnix kde sunshine
+        niri code firefox terminal discord steam godot direnv dolphin pipewire musnix kde  sunshine
         inputs.nix-flatpak.nixosModules.nix-flatpak
       ];
 
@@ -129,8 +129,6 @@ in {
 
     home.packages = with pkgs; [
       libreoffice-stable
-      jetbrains.rider
-      jetbrains.clion
       reaper
       kdePackages.plasma-systemmonitor
       prismlauncher
@@ -142,6 +140,8 @@ in {
       winetricks
       vintagestory
       heroic
+      deadlock-mod-manager
+      neovim
     ];
   };
 }

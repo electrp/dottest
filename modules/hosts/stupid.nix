@@ -11,11 +11,15 @@
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" ];
     boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-amd" ];
+    boot.kernelModules = [ 
+      "kvm-amd"
+    ];
     boot.extraModulePackages = [ ];
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+    boot.kernelParams = [  ];
 
     fileSystems."/" =
       { device = "/dev/disk/by-uuid/4fb01360-40e1-4b28-be6c-de2d323b0fea";
