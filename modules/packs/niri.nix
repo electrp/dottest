@@ -104,6 +104,14 @@
           default-column-width = { fixed = 1080; };
         }
       ];
+      layer-rules = [
+        {
+          matches = [
+            { namespace = "^noctalia-backdrop"; }
+          ];
+          place-within-backdrop = true;
+        }
+      ];
       debug = {
         honor-xdg-activation-with-invalid-serial = []; # [] == no argument
       };
