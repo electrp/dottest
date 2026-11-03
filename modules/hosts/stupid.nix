@@ -3,10 +3,12 @@
   flake.nixosConfigurations = inputs.self.lib.clib.mkNixos "x86_64-linux" "stupid";
 
   flake.modules.nixos.stupid = { pkgs, config, ...}: {
-    imports = [ 
-      inputs.self.modules.nixos.home-manager
-      inputs.self.modules.nixos.will
-      inputs.self.modules.nixos.tailscale
+    imports = with inputs.self.modules.nixos; [ 
+      home-manager
+      will
+      tailscale
+			sunshine
+      noctalia-greeter
     ];
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" ];

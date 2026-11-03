@@ -269,10 +269,10 @@
 		};
 
 		services.pcscd.enable = true;
-		programs.gnupg.agent = {
+		/* programs.gnupg.agent = {
 			enable = true;
 			enableSSHSupport = true;
-		};
+		}; */
 
 		systemd.services.greetd.serviceConfig = {
 			Type = "idle";

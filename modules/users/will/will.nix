@@ -15,7 +15,7 @@ in {
     }:
     {
       imports = with inputs.self.modules.nixos; [
-        niri code firefox alacritty discord steam godot direnv dolphin pipewire musnix kde  sunshine
+        niri code firefox alacritty discord steam godot direnv dolphin pipewire musnix kde umbriel ssh
         inputs.nix-flatpak.nixosModules.nix-flatpak
       ];
 
@@ -79,7 +79,7 @@ in {
         pkgs.kdePackages.kio-extras
         pkgs.kdePackages.qtwayland
         pkgs.qt5.qtwayland
-        (pkgs.lutris.override {
+        /* (pkgs.lutris.override {
           buildFHSEnv = args: pkgs.buildFHSEnv (args // {
             multiPkgs = envPkgs: let
               originalPkgs = args.multiPkgs envPkgs;
@@ -89,7 +89,7 @@ in {
             in
               builtins.filter (p: (p.pname or "") != "openldap") originalPkgs ++ [ customLdap ];
           });
-        })
+        }) */
       ];
 
       services.udev.extraRules = ''
@@ -122,14 +122,29 @@ in {
     };
   
   flake.modules.homeManager."${username}" = { pkgs, pkgs-main, ... }:
+  let
+    reaper-fixed = pkgs.reaper.overrideAttrs (oldAttrs: {
+      nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [
+        # Pin to an older working version of patchelf
+        (pkgs.patchelf.overrideAttrs (
+          finalAttrs: _: {
+            version = "0.15.2";
+            src = pkgs.fetchurl {
+              url = "https://github.com/NixOS/patchelf/releases/download/${finalAttrs.version}/patchelf-${finalAttrs.version}.tar.bz2";
+              hash = "sha256-F3RfVkFZyOIo/EEtplogSLhGxLa0Igt3y/IkFuAvLXw=";
+            };
+          }
+        ))
+      ];
+    });
+  in
   {
     home.username = "${username}";
     home.stateVersion = "26.05";
 
-
     home.packages = with pkgs; [
       libreoffice-stable
-      reaper
+      reaper-fixed
       kdePackages.plasma-systemmonitor
       prismlauncher
       # surge
