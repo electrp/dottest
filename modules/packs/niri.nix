@@ -132,7 +132,6 @@
         # Terminal and Application Launchers
         "Mod+T".action.spawn = "alacritty";
         "Mod+D".action.spawn = "fuzzel";
-        
 
         # Hotkey Overlay & Shortcuts Inhibit
         "Mod+Shift+Slash".action.show-hotkey-overlay = {};
@@ -152,6 +151,11 @@
         "Mod+J".action.focus-window-down = {};
         "Mod+K".action.focus-window-up = {};
         "Mod+L".action.focus-column-right = {};
+
+        "Mod+R".action.switch-preset-column-width = {};
+        "Mod+Shift+R".action.switch-preset-column-width-back = {};
+        "Mod+Ctrl+R".action.rest-window-height = {};
+        "Mod+Ctrl+Shift+R".action.switch-preset-window-height = {};
 
         # Moving Columns / Windows
         "Mod+Ctrl+Left".action.move-column-left = {};
