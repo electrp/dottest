@@ -100,6 +100,8 @@
       openFirewall = true;
     };
 
+    boot.supportedFilesystems = [ "ntfs" ];
+
     services.printing = {
       enable = true;
       drivers = with pkgs; [

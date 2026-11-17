@@ -3,7 +3,7 @@
   ...
 }:
 {
-  /* flake.modules.nixos.sops = {
+  flake.modules.nixos.sops = {
     home-manager.sharedModules = [
       inputs.self.modules.homeManager.firefox
     ];
@@ -23,5 +23,5 @@
   };
 
   flake.modules.homeManager.sops = {
-  }; */
+  };
 }
