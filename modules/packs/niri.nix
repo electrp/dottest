@@ -38,12 +38,6 @@
   };
 
   flake.modules.homeManager.niri = { pkgs, config, ... }: {
-    imports = [
-      # inputs.dms.homeModules.dank-material-shell
-      # inputs.dms.homeModules.niri
-      inputs.noctalia.homeModules.default
-    ];
-
     # programs.dank-material-shell = {
     #   enable = true;
     #   enableSystemMonitoring = true;
@@ -68,22 +62,6 @@
     #     };
     #   };
     # };
-
-    programs.noctalia = {
-      enable = true;
-      settings = { # This may also be a string or path to a .toml file.
-        theme = {
-          mode = "dark";
-          source = "builtin";
-          builtin = "Catppuccin";
-        };
-
-        wallpaper = {
-          enabled = true;
-          default.path = "/path/to/wallpapers/wallpaper.png";
-        };
-      };
-    };
 
     programs.niri.settings = 
     { 

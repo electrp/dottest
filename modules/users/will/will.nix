@@ -15,7 +15,7 @@ in {
     }:
     {
       imports = with inputs.self.modules.nixos; [
-        niri code firefox alacritty discord steam godot direnv dolphin pipewire musnix kde umbriel ssh
+        niri code firefox alacritty discord steam godot direnv dolphin pipewire musnix kde umbriel ssh noctalia
         inputs.nix-flatpak.nixosModules.nix-flatpak
       ];
 

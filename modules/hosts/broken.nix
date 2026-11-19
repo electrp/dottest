@@ -12,6 +12,7 @@
       home-manager
       will
       tailscale
+      noctalia-greeter
     ];
 
     swapDevices = [{
@@ -21,7 +22,6 @@
 
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
-    services.displayManager.ly.enable = true;
 
     hardware.bluetooth.enable = true; # Enables the Bluetooth hardware service
 
