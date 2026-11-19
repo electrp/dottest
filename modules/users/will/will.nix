@@ -158,5 +158,10 @@ in {
       deadlock-mod-manager
       neovim
     ];
+
+    home.file."./" = {
+      source = ./home_env;
+      recursive = true;
+    };
   };
 }
