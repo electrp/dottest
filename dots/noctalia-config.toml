@@ -238,7 +238,7 @@ source = "community"
 wallpaper_scheme = "vibrant"
 
     [theme.templates]
-    builtin_ids = [ "alacritty", "gtk3", "gtk4", "kcolorscheme", "niri" ]
+    builtin_ids = [ "alacritty", "gtk3", "gtk4", "luciole", "niri" ]
     community_ids = [ "pywalfox", "vscode", "prismlauncher" ]
 
         [theme.templates.user.palette_creator_live]
@@ -246,22 +246,23 @@ wallpaper_scheme = "vibrant"
         output_path = "/home/will/.local/state/noctalia/plugin-data/kyle-palette-creator/live-snapshot.json"
 
 [wallpaper]
+directory = "~/.backgrounds"
 enabled = true
 
     [wallpaper.default]
-    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+    path = "/home/will/.backgrounds/bubblebear.png"
 
     [wallpaper.last]
-    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+    path = "/home/will/.backgrounds/bubblebear.png"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+    path = "/home/will/.backgrounds/bubblebear.png"
 
     [wallpaper.monitors.DP-2]
-    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+    path = "/home/will/.backgrounds/bubblebear.png"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+    path = "/home/will/.backgrounds/bubblebear.png"
 
 [widget.bar]
 type = "raycursive/niri-displays:bar"
