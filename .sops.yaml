@@ -1,0 +1,23 @@
+keys:
+  - &will age1kuraql6ms3huakwye8l6wx7lsrapgy624gfn5t0adusvw2kksprshf8a5e
+  - &stupid age1gvy0xx2l06dajvc98uvkurzw2e2mkwqe4nuxjunwc63xmgy2994sfm7z3m
+creation_rules:
+  # shared for all users
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *will
+      
+  # [[ HOSTS ]]
+  # stupid owned by will
+  - path_regex: secrets/hosts/stupid/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *will
+        - *stupid
+
+  # [[ USERS ]]
+  - path_regex: secrets/users/will/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *will

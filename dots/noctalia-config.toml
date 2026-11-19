@@ -1,0 +1,291 @@
+[bar]
+order = [ "default", "bottom" ]
+
+    [bar.bottom]
+    background_opacity = 0.0
+    capsule = true
+    center = [ "taskbar" ]
+    compositor_blur = false
+    enabled = false
+    end = []
+    padding = 12
+    position = "bottom"
+    reserve_space = false
+    smart_auto_hide = true
+    start = []
+
+    [bar.default]
+    capsule = true
+    capsule_border_width = 0.5
+    center = [ "clock", "bar_3" ]
+    compositor_blur = false
+    end = [
+        "bar_2",
+        "widget_2",
+        "widget",
+        "bar",
+        "media",
+        "tray",
+        "notifications",
+        "clipboard",
+        "network",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "control-center",
+        "session"
+    ]
+    shadow = false
+    start = [ "launcher", "wallpaper", "workspaces", "taskbar" ]
+    widget_spacing = 0
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@DP-3",
+    "lockscreen-login-box@DP-2",
+    "lockscreen-login-box@DP-1",
+    "lockscreen-login-box@WL-1",
+    "lockscreen-login-box@winit"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 959.99993896484375
+    cy = 943.50018310546875
+    output = "DP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 959.99993896484375
+    cy = 898.00006103515625
+    output = "DP-2"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1719.9998779296875
+    cy = 1197.33349609375
+    output = "DP-3"
+    placement_height = 1440.0
+    placement_width = 3440.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@WL-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 859.3970947265625
+    cy = 1157.12109375
+    output = "WL-1"
+    placement_height = 1402.0
+    placement_width = 1717.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@WL-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@winit"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 640.0
+    cy = 1210.0
+    output = "winit"
+    placement_height = 1392.0
+    placement_width = 1280.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@winit".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugins]
+enabled = [
+    "raycursive/niri-displays",
+    "samuelskovbakke/calculator-plus",
+    "tordex/nvtop",
+    "weinguyen/procmon",
+    "decksters-lab/palette-creator",
+    "theblackdon/theme-switcher",
+    "prponkshe/umbriel-displays",
+    "noctalia/umbriel-companion"
+]
+
+[shell]
+avatar_path = "/home/will/face.webp"
+corner_radius_scale = 1.0500000156462193
+umbriel_audio_provider_enabled = true
+
+    [shell.animation]
+    speed = 2.0000000298023224
+
+    [shell.launcher]
+    app_grid = true
+    compact = true
+    layout = "simple"
+    show_app_actions = true
+
+    [shell.shadow]
+    alpha = 0.52999998815357685
+
+[theme]
+builtin = "Tokyo-Night"
+community_palette = "Gruvbox Material Hard"
+mode = "dark"
+source = "community"
+wallpaper_scheme = "vibrant"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "gtk3", "gtk4", "kcolorscheme", "niri" ]
+    community_ids = [ "pywalfox", "vscode", "prismlauncher" ]
+
+        [theme.templates.user.palette_creator_live]
+        input_path = "/home/will/.local/state/noctalia/plugins/materialized/community/palette-creator/templates/live-snapshot.tpl"
+        output_path = "/home/will/.local/state/noctalia/plugin-data/kyle-palette-creator/live-snapshot.json"
+
+[wallpaper]
+enabled = true
+
+    [wallpaper.default]
+    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+
+    [wallpaper.last]
+    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+
+    [wallpaper.monitors.DP-1]
+    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+
+    [wallpaper.monitors.DP-2]
+    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/will/Pictures/Screenshots/Screenshot from 2026-09-15 15-57-53.png"
+
+[widget.bar]
+type = "raycursive/niri-displays:bar"
+
+[widget.bar_2]
+type = "prponkshe/umbriel-displays:bar"
+
+[widget.bar_3]
+type = "noctalia/umbriel-companion:bar"
+
+[widget.session]
+enabled = false
+
+[widget.taskbar]
+scale = 0.94999999999999996
+show_window_title = true
+
+[widget.widget]
+enabled = false
+type = "weinguyen/procmon:widget"
+
+[widget.widget_2]
+enabled = false
+type = "tordex/nvtop:widget"
+
+[widget.workspaces]
+pill_scale = 0.90000000000000002

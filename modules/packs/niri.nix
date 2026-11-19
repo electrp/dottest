@@ -154,7 +154,7 @@
 
         "Mod+R".action.switch-preset-column-width = {};
         "Mod+Shift+R".action.switch-preset-column-width-back = {};
-        "Mod+Ctrl+R".action.rest-window-height = {};
+        "Mod+Ctrl+R".action.reset-window-height = {};
         "Mod+Ctrl+Shift+R".action.switch-preset-window-height = {};
 
         # Moving Columns / Windows

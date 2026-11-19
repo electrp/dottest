@@ -9,6 +9,7 @@
       tailscale
 			sunshine
       noctalia-greeter
+      sops
     ];
 
     boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" ];

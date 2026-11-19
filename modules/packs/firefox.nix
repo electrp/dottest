@@ -9,7 +9,7 @@
     ];
   };
 
-  flake.modules.homeManager.firefox = {
+  flake.modules.homeManager.firefox = {pkgs, ... }: {
     programs.firefox = {
       enable = true;
     };
